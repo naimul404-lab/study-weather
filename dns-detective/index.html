@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b1020" />
+    <meta name="description" content="Follow a domain name through a visual, educational DNS lookup simulation." />
+    <title>DNS Detective — Follow the lookup</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#top" aria-label="DNS Detective home">
+          <span class="brand-icon" aria-hidden="true">⌕</span>
+          <span>DNS<span class="brand-light">Detective</span></span>
+        </a>
+        <div class="top-note"><span class="live-dot"></span> INTERACTIVE NETWORK LAB <span class="demo-tag">SIMULATION</span></div>
+      </header>
+
+      <main id="top">
+        <section class="intro">
+          <div class="intro-copy">
+            <p class="eyebrow">A name takes a journey</p>
+            <h1>Where does a<br /><span>website name</span> go?</h1>
+            <p class="intro-text">Trace the hidden chain that turns a human-friendly domain into an address computers can reach.</p>
+          </div>
+          <aside class="fact-card">
+            <span class="fact-symbol" aria-hidden="true">{ }</span>
+            <p>DNS is like the internet’s address book. This lab makes the lookup visible—one clue at a time.</p>
+          </aside>
+        </section>
+
+        <section class="lookup-panel" aria-labelledby="lookup-heading">
+          <div class="lookup-label-row">
+            <label id="lookup-heading" for="domainInput">ENTER A DOMAIN TO INVESTIGATE</label>
+            <span class="demo-label">Try <button class="example-link" type="button" data-domain="example.com">example.com</button></span>
+          </div>
+          <form id="lookupForm" class="lookup-form">
+            <span class="input-prefix" aria-hidden="true">https://</span>
+            <input id="domainInput" name="domain" type="text" placeholder="your-domain.com" autocomplete="url" spellcheck="false" aria-describedby="inputHint" />
+            <button id="traceButton" class="trace-button" type="submit"><span>Trace lookup</span><span aria-hidden="true">↗</span></button>
+          </form>
+          <p id="inputHint" class="input-hint">Educational simulation only · No live DNS requests are made</p>
+          <p id="errorMessage" class="error-message" role="alert" hidden></p>
+        </section>
+
+        <section class="journey-section" aria-labelledby="journeyHeading">
+          <div class="section-heading">
+            <div><p class="eyebrow">The investigation</p><h2 id="journeyHeading">Follow the lookup</h2></div>
+            <div class="progress-wrap"><span id="progressText">Ready when you are</span><div class="progress-track"><span id="progressBar"></span></div></div>
+          </div>
+
+          <div class="journey-layout">
+            <div class="route-card">
+              <div class="route-topline"><span>RESOLUTION PATH</span><span id="routeDomain">AWAITING DOMAIN</span></div>
+              <div class="route-map" id="routeMap" aria-label="DNS resolution path">
+                <div class="route-line" aria-hidden="true"><span id="routeLineFill"></span></div>
+                <div class="route-node" data-step="0"><span class="node-icon">▣</span><span class="node-label">Your device</span><small>Browser cache</small></div>
+                <div class="route-node" data-step="1"><span class="node-icon">↗</span><span class="node-label">Resolver</span><small>Recursive DNS</small></div>
+                <div class="route-node" data-step="2"><span class="node-icon">◉</span><span class="node-label">Root server</span><small>Finds the TLD</small></div>
+                <div class="route-node" data-step="3"><span class="node-icon">◎</span><span class="node-label">TLD server</span><small>Finds authority</small></div>
+                <div class="route-node" data-step="4"><span class="node-icon">⌂</span><span class="node-label">Name server</span><small>Returns a record</small></div>
+              </div>
+              <div class="route-footer"><span class="key-dot"></span> Each hop leaves a clue. Select a step to inspect it.</div>
+            </div>
+
+            <aside class="clue-card" aria-live="polite" aria-atomic="true">
+              <div class="clue-top"><span id="clueBadge" class="clue-badge">CASE FILE</span><span id="clueNumber" class="clue-number">— / 5</span></div>
+              <div class="clue-icon" id="clueIcon" aria-hidden="true">⌕</div>
+              <h3 id="clueTitle">Ready to investigate?</h3>
+              <p id="clueText">Enter a domain and trace its path through the DNS hierarchy. Each stop explains one part of the resolution process.</p>
+              <div class="clue-message" id="clueMessage">Your investigation stays in this browser.</div>
+              <div class="clue-actions"><button id="previousButton" class="step-button" type="button" disabled>← Previous</button><button id="nextButton" class="step-button next" type="button" disabled>Next clue →</button></div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="answer-card" id="answerCard" hidden aria-live="polite">
+          <div class="answer-icon" aria-hidden="true">✓</div>
+          <div><p class="eyebrow">Case closed · simulated answer</p><h2 id="answerTitle">Address record found</h2><p id="answerDescription">The authoritative server has a matching record.</p></div>
+          <code id="answerRecord">A  203.0.113.42</code>
+        </section>
+
+        <footer class="footer"><span>DNS DETECTIVE <span class="footer-muted">· LEARN THE INTERNET, ONE LOOKUP AT A TIME</span></span><span>Made for curious minds <span aria-hidden="true">✳</span></span></footer>
+      </main>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
