@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Study Weather</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="brand">
+          <span class="brand-mark">☀️</span>
+          <span>Study Weather</span>
+        </div>
+        <button class="ghost-btn">Today’s Forecast</button>
+      </header>
+
+      <main class="hero">
+        <section class="hero-copy">
+          <p class="eyebrow">Mind-aware study planning</p>
+          <h1>Work with your brain’s weather.</h1>
+          <p class="subtext">
+            Not every day is a sunny study day. Match your task to your energy,
+            focus, and cognitive load with a calmer, smarter rhythm.
+          </p>
+
+          <div class="cta-row">
+            <button id="checkWeatherBtn" class="primary-btn">Check my study weather</button>
+            <button class="secondary-btn">View sample forecast</button>
+          </div>
+        </section>
+
+        <section class="forecast-card">
+          <div class="forecast-header">
+            <span class="chip">Today</span>
+            <span class="temp">72°</span>
+          </div>
+
+          <div class="sky-icon" id="skyIcon">☀️</div>
+          <h2 id="weatherTitle">Sunny learning window</h2>
+          <p id="weatherDescription">
+            Your focus is strong and your energy is rising. This is a great time
+            for deep work and high-impact tasks.
+          </p>
+
+          <div class="metrics">
+            <div>
+              <label>Energy</label>
+              <strong id="energyValue">82%</strong>
+            </div>
+            <div>
+              <label>Focus</label>
+              <strong id="focusValue">78%</strong>
+            </div>
+            <div>
+              <label>Load</label>
+              <strong id="loadValue">Low</strong>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <section class="advice-grid">
+        <article class="advice-card active">
+          <span class="emoji">🌤️</span>
+          <h3>Sunny</h3>
+          <p>Best for hard problems, deep work, and creating momentum.</p>
+        </article>
+
+        <article class="advice-card">
+          <span class="emoji">⛅</span>
+          <h3>Cloudy</h3>
+          <p>Use for structured work, revision, and steady execution.</p>
+        </article>
+
+        <article class="advice-card">
+          <span class="emoji">🌧️</span>
+          <h3>Rainy</h3>
+          <p>Choose shorter tasks, review, and light learning blocks.</p>
+        </article>
+
+        <article class="advice-card">
+          <span class="emoji">⛈️</span>
+          <h3>Stormy</h3>
+          <p>Reduce load, recover, and protect your attention today.</p>
+        </article>
+      </section>
+
+      <section class="task-panel">
+        <h3>Suggested study mix</h3>
+        <ul id="taskList">
+          <li>Deep dive: 45 min of high-priority concept work</li>
+          <li>Practice: 20 min solving a focused problem</li>
+          <li>Review: 10 min recap and cleanup</li>
+        </ul>
+      </section>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
